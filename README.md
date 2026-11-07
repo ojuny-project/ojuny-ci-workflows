@@ -56,6 +56,19 @@ replaces them. They are not migrated or wrapped.
 - `.github/workflows/reusable-ci.yml` is the reusable caller.
 - `.github/workflows/ci.yml` runs the runner on this repository.
 
+## Docs
+
+- [docs/heavy-testing.md](docs/heavy-testing.md) lists the work that needs KVM,
+  ISO artifacts, physical hardware or the CI server.
+- [docs/acceptance-playbook.md](docs/acceptance-playbook.md) covers the
+  acceptance flows, VM requirements and OCR classification.
+- [docs/install-time-playbook.md](docs/install-time-playbook.md) covers the
+  install report, result generation and the VM and physical tracks.
+- [docs/coverage-matrix.md](docs/coverage-matrix.md) records which checks are
+  implemented, partial or pending.
+- [docs/build-matrix.md](docs/build-matrix.md) records the x86_64 and generic
+  aarch64 matrix.
+
 ## Branch protection
 
 Require the `fast` and `nix` jobs from `.github/workflows/ojuny-ci.yml` in every

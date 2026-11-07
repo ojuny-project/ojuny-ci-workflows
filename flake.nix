@@ -63,22 +63,8 @@
           schemas = pkgs.runCommand "check-schemas" {
             nativeBuildInputs = [ pkgs.python3 ];
           } ''
-            python3 - ${./.} <<'PY'
-import json
-import pathlib
-import sys
-
-root = pathlib.Path(sys.argv[1])
-paths = sorted((root / "schemas").glob("*.json")) + [root / "repos.json"]
-for path in paths:
-    data = json.loads(path.read_text(encoding="utf-8"))
-    if not isinstance(data, dict):
-        raise SystemExit("not an object: " + str(path))
-    if path.parent.name == "schemas":
-        if "$schema" not in data or "title" not in data:
-            raise SystemExit("missing $schema or title: " + str(path))
-print("schemas ok")
-PY
+            cd ${./.}
+            python3 -m unittest tests.test_schemas -v
             touch $out
           '';
 

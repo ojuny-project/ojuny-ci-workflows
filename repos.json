@@ -30,7 +30,7 @@
           "checks.x86_64-linux.module-tree-current"
         ],
         "nix": [],
-        "heavy": []
+        "heavy": ["build:hydraJobs.fixture-system-build"]
       },
       "hydraJobs": "hydraJobs"
     },
@@ -46,7 +46,11 @@
           "checks.x86_64-linux.module",
           "checks.x86_64-linux.unattended"
         ],
-        "nix": ["checks.x86_64-linux.offline-install-closure"],
+        "nix": [
+          "checks.x86_64-linux.install-report",
+          "checks.x86_64-linux.collect-install-report",
+          "checks.x86_64-linux.offline-install-closure"
+        ],
         "heavy": [
           "checks.x86_64-linux.offline-iso-size",
           "checks.x86_64-linux.offline-unattended-iso-size"
@@ -84,7 +88,7 @@
           "checks.x86_64-linux.menu-extra-entries",
           "checks.x86_64-linux.wallpaper-set"
         ],
-        "nix": [],
+        "nix": ["script:tmp=$(mktemp -d) && cp -a . \"$tmp/repo\" && cp options.generated.md \"$tmp/expected.md\" && (cd \"$tmp/repo\" && python3 scripts/gen-options.py) && diff -u \"$tmp/expected.md\" \"$tmp/repo/options.generated.md\""],
         "heavy": []
       },
       "hydraJobs": "hydraJobs"

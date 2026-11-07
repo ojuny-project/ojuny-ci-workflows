@@ -13,13 +13,15 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["name", "screen", "strings", "manual"],
+        "required": ["name", "screen", "strings", "manual", "status"],
         "properties": {
           "name": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1
           },
           "screen": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1
           },
           "strings": {
             "type": "array",
@@ -29,6 +31,12 @@
           },
           "manual": {
             "type": "boolean"
+          },
+          "status": {
+            "enum": ["draft", "active"]
+          },
+          "notes": {
+            "type": "string"
           }
         },
         "additionalProperties": false

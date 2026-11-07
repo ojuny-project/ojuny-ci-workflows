@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "flows": [
+    {
+      "name": "install-attended",
+      "screen": "calamares",
+      "strings": [],
+      "manual": true,
+      "status": "draft",
+      "notes": "Attended Calamares remains manual."
+    },
+    {
+      "name": "install-unattended",
+      "screen": "installer",
+      "strings": [],
+      "manual": false,
+      "status": "draft",
+      "notes": "Strings pending the first graphical install run."
+    },
+    {
+      "name": "login",
+      "screen": "display-manager",
+      "strings": [],
+      "manual": false,
+      "status": "draft",
+      "notes": "Strings pending the first graphical session run."
+    },
+    {
+      "name": "bar",
+      "screen": "desktop-bar",
+      "strings": [],
+      "manual": false,
+      "status": "draft",
+      "notes": "Strings pending the first graphical session run."
+    },
+    {
+      "name": "launcher",
+      "screen": "launcher",
+      "strings": [],
+      "manual": false,
+      "status": "draft",
+      "notes": "Strings pending the first graphical session run."
+    },
+    {
+      "name": "menu",
+      "screen": "ojuny-menu",
+      "strings": [],
+      "manual": false,
+      "status": "draft",
+      "notes": "Strings pending the first graphical session run."
+    },
+    {
+      "name": "settings",
+      "screen": "settings-gui",
+      "strings": [],
+      "manual": false,
+      "status": "draft",
+      "notes": "Strings pending the first graphical session run."
+    },
+    {
+      "name": "notification",
+      "screen": "notification",
+      "strings": [],
+      "manual": false,
+      "status": "draft",
+      "notes": "Strings pending the first graphical session run."
+    },
+    {
+      "name": "rollback",
+      "screen": "bootloader",
+      "strings": [],
+      "manual": false,
+      "status": "draft",
+      "notes": "Strings pending the first rollback run."
+    }
+  ]
+}

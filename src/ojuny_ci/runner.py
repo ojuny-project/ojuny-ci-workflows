@@ -49,6 +49,8 @@ def _command(repository: Repository, check: str) -> list[str]:
         ]
     if check.startswith("script:"):
         return ["bash", "-c", check[len("script:") :]]
+    if check.startswith("build:"):
+        return ["nix", "build", "--no-link", "--print-out-paths", f".#{check[len('build:') :]}"]
     if check.startswith("hydraJobs"):
         return ["nix", "eval", "--json", f".#{check}"]
     return ["nix", "build", "--no-link", "--print-out-paths", f".#{check}"]
@@ -103,7 +105,7 @@ def run_checks(
     tasks: list[tuple[Repository, str, str]] = []
     for repository in repositories:
         for tier in tiers:
-            for check in repository.checks_for(tier):
+            for check in (*manifest.global_checks.get(tier, ()), *repository.checks_for(tier)):
                 tasks.append((repository, check, tier))
 
     results: list[CheckResult] = []
