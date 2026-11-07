@@ -13,6 +13,7 @@ Status: implemented, partial or pending.
 | Desktop and GUIs | implemented | partial | pending |
 | Patches | implemented | partial | pending |
 | Cache discovery | implemented | implemented | pending |
+| CI server | implemented | implemented | pending |
 | Test flakes | implemented | implemented | pending |
 | Docs and site | implemented | partial | pending |
 | Release boundary | partial | pending | pending |
@@ -34,6 +35,8 @@ ISO artifacts, the CI server, physical hardware or a heavy build.
 - `ojuny-test-flakes`: `examples`, `default`.
 - `ojuny-site`: `apps.ci` runs the site check, docs links, metrics and build.
 - `nix-cache-discovery`: `package`, `vm`.
+- `ojuny-ci-server`: `settings-eval`, `jobsets-schema`, `storage-assertions`,
+  `options-coverage`, `default`.
 - `nix-cleaner`, `nix-settings-gui`, `nix-regedit`, `nix-shell-gui`,
   `simple-nix-update-gui`: package and default checks.
 
@@ -50,3 +53,6 @@ ISO artifacts, the CI server, physical hardware or a heavy build.
 - The OCR stability job.
 - The heavy ISO, reproducibility and release-boundary checks.
 - The aggregate Hydra contract.
+- The `ojuny-ci-server` runtime: Hydra admin login, jobset upsert, cache
+  discovery, network mounts, remote builders, Proxmox image and aarch64 build.
+  The server list is in `~/repos/ojuny-ci-server/docs/heavy-testing.md`.

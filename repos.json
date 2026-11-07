@@ -221,13 +221,19 @@
     {
       "name": "ojuny-ci-server",
       "path": "ojuny-ci-server",
-      "kind": "script",
+      "kind": "flake",
       "systems": ["x86_64-linux"],
       "checks": {
-        "fast": [],
-        "nix": [],
+        "fast": [
+          "checks.x86_64-linux.settings-eval",
+          "checks.x86_64-linux.jobsets-schema",
+          "checks.x86_64-linux.storage-assertions",
+          "checks.x86_64-linux.options-coverage"
+        ],
+        "nix": ["checks.x86_64-linux.default"],
         "heavy": []
-      }
+      },
+      "hydraJobs": "hydraJobs"
     }
   ]
 }
