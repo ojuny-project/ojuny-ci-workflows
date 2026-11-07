@@ -1,0 +1,58 @@
+name: reusable-ci
+
+on:
+  workflow_call:
+    inputs:
+      tier:
+        description: "fast, nix, heavy, or all"
+        required: true
+        type: string
+      repo:
+        description: "Repository name in the manifest"
+        required: true
+        type: string
+      repos_file:
+        description: "Optional path to repos.json"
+        required: false
+        type: string
+        default: ""
+      runner_flake:
+        description: "Flake that exposes the ojuny-ci app"
+        required: false
+        type: string
+        default: "github:ojuny-project/ojuny-ci-workflows"
+    secrets:
+      inherit: false
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v5
+      - uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+      - name: Run the Ojuny CI runner
+        run: |
+          extra=()
+          if [ -n "${{ inputs.repos_file }}" ]; then
+            extra+=(--repos-file "${{ inputs.repos_file }}")
+          fi
+          nix run "${{ inputs.runner_flake }}#ci" -- \
+            run --tier "${{ inputs.tier }}" --repo "${{ inputs.repo }}" \
+            --json-file result.json --junit junit.xml --github-annotations \
+            "${extra[@]}"
+      - name: Upload CI results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ojuny-ci-${{ inputs.repo }}-${{ inputs.tier }}
+          path: |
+            result.json
+            junit.xml
+          if-no-files-found: ignore

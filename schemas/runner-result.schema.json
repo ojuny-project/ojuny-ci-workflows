@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ojuny-project.github.io/schemas/runner-result.json",
+  "title": "Ojuny CI runner result",
+  "type": "object",
+  "required": ["runner_version", "started_at", "finished_at", "results"],
+  "properties": {
+    "runner_version": {
+      "type": "string"
+    },
+    "started_at": {
+      "type": "string"
+    },
+    "finished_at": {
+      "type": "string"
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/result"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "result": {
+      "type": "object",
+      "required": ["repo", "check", "tier", "status", "duration_seconds"],
+      "properties": {
+        "repo": {
+          "type": "string"
+        },
+        "check": {
+          "type": "string"
+        },
+        "tier": {
+          "enum": ["fast", "nix", "heavy"]
+        },
+        "status": {
+          "enum": ["pass", "fail", "skip", "error"]
+        },
+        "duration_seconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "log": {
+          "type": ["string", "null"]
+        },
+        "message": {
+          "type": "string"
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

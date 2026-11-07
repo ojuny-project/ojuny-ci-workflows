@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ojuny-project.github.io/schemas/install-result.json",
+  "title": "Ojuny install result",
+  "type": "object",
+  "required": ["version", "generated_at", "report", "timings", "phases", "config_fingerprint"],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "const": 1
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "report": {
+      "type": "string"
+    },
+    "config_fingerprint": {
+      "type": "string"
+    },
+    "timings": {
+      "type": "object",
+      "required": ["installer_start", "disk_write_complete", "first_boot", "login_ready"],
+      "properties": {
+        "installer_start": {
+          "type": ["string", "null"]
+        },
+        "disk_write_complete": {
+          "type": ["string", "null"]
+        },
+        "first_boot": {
+          "type": ["string", "null"]
+        },
+        "login_ready": {
+          "type": ["string", "null"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    }
+  },
+  "additionalProperties": false
+}

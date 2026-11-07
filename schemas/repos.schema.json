@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ojuny-project.github.io/schemas/repos.json",
+  "title": "Ojuny CI manifest",
+  "type": "object",
+  "required": ["version", "repositories"],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "const": 1
+    },
+    "global": {
+      "$ref": "#/$defs/tiers"
+    },
+    "repositories": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/repository"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "tiers": {
+      "type": "object",
+      "properties": {
+        "fast": {
+          "$ref": "#/$defs/checkList"
+        },
+        "nix": {
+          "$ref": "#/$defs/checkList"
+        },
+        "heavy": {
+          "$ref": "#/$defs/checkList"
+        }
+      },
+      "additionalProperties": false
+    },
+    "checkList": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "repository": {
+      "type": "object",
+      "required": ["name", "path", "kind", "checks"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": ["flake", "script", "missing"]
+        },
+        "systems": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "checks": {
+          "$ref": "#/$defs/tiers"
+        },
+        "hydraJobs": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

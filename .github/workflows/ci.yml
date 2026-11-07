@@ -1,0 +1,17 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  runner:
+    uses: ./.github/workflows/reusable-ci.yml
+    with:
+      tier: nix
+      repo: ojuny-ci-workflows
+      runner_flake: "."

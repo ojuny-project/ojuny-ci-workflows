@@ -1,0 +1,229 @@
+{
+  "version": 1,
+  "global": {
+    "fast": [],
+    "nix": [],
+    "heavy": []
+  },
+  "repositories": [
+    {
+      "name": "ojuny-ci-workflows",
+      "path": "ojuny-ci-workflows",
+      "kind": "flake",
+      "systems": ["x86_64-linux", "aarch64-linux"],
+      "checks": {
+        "fast": ["checks.x86_64-linux.schemas"],
+        "nix": ["checks.x86_64-linux.runner"],
+        "heavy": []
+      },
+      "hydraJobs": "hydraJobs"
+    },
+    {
+      "name": "ojuny-template",
+      "path": "ojuny-template",
+      "kind": "flake",
+      "systems": ["x86_64-linux"],
+      "checks": {
+        "fast": [
+          "checks.x86_64-linux.hardware-profile",
+          "checks.x86_64-linux.bind-args",
+          "checks.x86_64-linux.module-tree-current"
+        ],
+        "nix": [],
+        "heavy": []
+      },
+      "hydraJobs": "hydraJobs"
+    },
+    {
+      "name": "ojuny-installer",
+      "path": "ojuny-installer",
+      "kind": "flake",
+      "systems": ["x86_64-linux"],
+      "checks": {
+        "fast": [
+          "checks.x86_64-linux.format",
+          "checks.x86_64-linux.extensions",
+          "checks.x86_64-linux.module",
+          "checks.x86_64-linux.unattended"
+        ],
+        "nix": ["checks.x86_64-linux.offline-install-closure"],
+        "heavy": [
+          "checks.x86_64-linux.offline-iso-size",
+          "checks.x86_64-linux.offline-unattended-iso-size"
+        ]
+      },
+      "hydraJobs": "hydraJobs"
+    },
+    {
+      "name": "ojuny-cli",
+      "path": "ojuny-cli",
+      "kind": "flake",
+      "systems": ["x86_64-linux"],
+      "checks": {
+        "fast": [
+          "checks.x86_64-linux.lint",
+          "checks.x86_64-linux.binary-programs",
+          "checks.x86_64-linux.cli-reference-current"
+        ],
+        "nix": [
+          "checks.x86_64-linux.tests",
+          "checks.x86_64-linux.ojuny-cli",
+          "checks.x86_64-linux.ojuny-patches-cli"
+        ],
+        "heavy": []
+      },
+      "hydraJobs": "hydraJobs"
+    },
+    {
+      "name": "ojuny-desktop",
+      "path": "ojuny-desktop",
+      "kind": "flake",
+      "systems": ["x86_64-linux"],
+      "checks": {
+        "fast": [
+          "checks.x86_64-linux.menu-extra-entries",
+          "checks.x86_64-linux.wallpaper-set"
+        ],
+        "nix": [],
+        "heavy": []
+      },
+      "hydraJobs": "hydraJobs"
+    },
+    {
+      "name": "ojuny-manual",
+      "path": "ojuny-manual",
+      "kind": "flake",
+      "systems": ["x86_64-linux"],
+      "checks": {
+        "fast": ["checks.x86_64-linux.manual-summary"],
+        "nix": ["checks.x86_64-linux.default"],
+        "heavy": []
+      },
+      "hydraJobs": "hydraJobs"
+    },
+    {
+      "name": "nix-cache-discovery",
+      "path": "nix-cache-discovery",
+      "kind": "flake",
+      "systems": ["x86_64-linux"],
+      "checks": {
+        "fast": [],
+        "nix": ["checks.x86_64-linux.package"],
+        "heavy": ["checks.x86_64-linux.vm"]
+      },
+      "hydraJobs": "hydraJobs"
+    },
+    {
+      "name": "nix-cleaner",
+      "path": "nix-cleaner",
+      "kind": "flake",
+      "systems": ["x86_64-linux"],
+      "checks": {
+        "fast": [],
+        "nix": ["checks.x86_64-linux.default"],
+        "heavy": []
+      },
+      "hydraJobs": "hydraJobs"
+    },
+    {
+      "name": "nix-settings-gui",
+      "path": "nix-settings-gui",
+      "kind": "flake",
+      "systems": ["x86_64-linux"],
+      "checks": {
+        "fast": [],
+        "nix": ["checks.x86_64-linux.default"],
+        "heavy": []
+      },
+      "hydraJobs": "hydraJobs"
+    },
+    {
+      "name": "nix-regedit",
+      "path": "nix-regedit",
+      "kind": "flake",
+      "systems": ["x86_64-linux"],
+      "checks": {
+        "fast": [],
+        "nix": ["checks.x86_64-linux.default"],
+        "heavy": []
+      },
+      "hydraJobs": "hydraJobs"
+    },
+    {
+      "name": "nix-shell-gui",
+      "path": "nix-shell-gui",
+      "kind": "flake",
+      "systems": ["x86_64-linux"],
+      "checks": {
+        "fast": [],
+        "nix": ["checks.x86_64-linux.default"],
+        "heavy": []
+      },
+      "hydraJobs": "hydraJobs"
+    },
+    {
+      "name": "simple-nix-update-gui",
+      "path": "simple-nix-update-gui",
+      "kind": "flake",
+      "systems": ["x86_64-linux"],
+      "checks": {
+        "fast": [],
+        "nix": [
+          "checks.x86_64-linux.daemon",
+          "checks.x86_64-linux.gui"
+        ],
+        "heavy": []
+      },
+      "hydraJobs": "hydraJobs"
+    },
+    {
+      "name": "ojuny-site",
+      "path": "ojuny-site",
+      "kind": "flake",
+      "systems": ["x86_64-linux"],
+      "checks": {
+        "fast": [],
+        "nix": ["script:nix run .#ci"],
+        "heavy": []
+      }
+    },
+    {
+      "name": "ojuny-patches",
+      "path": "ojuny-patches",
+      "kind": "flake",
+      "systems": ["x86_64-linux"],
+      "checks": {
+        "fast": [
+          "checks.x86_64-linux.annotations",
+          "checks.x86_64-linux.catalogue"
+        ],
+        "nix": ["checks.x86_64-linux.default"],
+        "heavy": []
+      },
+      "hydraJobs": "hydraJobs"
+    },
+    {
+      "name": "ojuny-test-flakes",
+      "path": "ojuny-test-flakes",
+      "kind": "flake",
+      "systems": ["x86_64-linux"],
+      "checks": {
+        "fast": [],
+        "nix": ["checks.x86_64-linux.default"],
+        "heavy": []
+      },
+      "hydraJobs": "hydraJobs"
+    },
+    {
+      "name": "ojuny-ci-server",
+      "path": "ojuny-ci-server",
+      "kind": "script",
+      "systems": ["x86_64-linux"],
+      "checks": {
+        "fast": [],
+        "nix": [],
+        "heavy": []
+      }
+    }
+  ]
+}

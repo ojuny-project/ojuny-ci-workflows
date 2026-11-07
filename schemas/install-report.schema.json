@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ojuny-project.github.io/schemas/install-report.json",
+  "title": "Ojuny install report",
+  "type": "object",
+  "required": ["version", "generated_at", "iso", "template", "environment", "phases"],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "const": 1
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "iso": {
+      "type": "object",
+      "required": ["variant", "toplevel", "closure_hash"],
+      "properties": {
+        "variant": {
+          "type": "string"
+        },
+        "toplevel": {
+          "type": "string"
+        },
+        "closure_hash": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "template": {
+      "type": "object",
+      "required": ["source", "revision"],
+      "properties": {
+        "source": {
+          "type": "string"
+        },
+        "revision": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "environment": {
+      "type": "object",
+      "required": ["cpu", "ram", "network", "usb", "storage", "kernel"],
+      "properties": {
+        "cpu": {
+          "type": "object"
+        },
+        "ram": {
+          "type": "object"
+        },
+        "network": {
+          "type": "object"
+        },
+        "usb": {
+          "type": "object"
+        },
+        "storage": {
+          "type": "object"
+        },
+        "kernel": {
+          "type": "object"
+        },
+        "vm": {
+          "type": ["object", "null"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    }
+  },
+  "additionalProperties": false
+}

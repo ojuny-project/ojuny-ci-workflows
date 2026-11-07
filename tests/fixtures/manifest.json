@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "global": {
+    "fast": [],
+    "nix": [],
+    "heavy": []
+  },
+  "repositories": [
+    {
+      "name": "alpha",
+      "path": "alpha",
+      "kind": "flake",
+      "systems": ["x86_64-linux"],
+      "checks": {
+        "fast": ["checks.x86_64-linux.alpha"],
+        "nix": [],
+        "heavy": []
+      },
+      "hydraJobs": "hydraJobs"
+    },
+    {
+      "name": "beta",
+      "path": "beta",
+      "kind": "script",
+      "systems": ["x86_64-linux"],
+      "checks": {
+        "fast": [],
+        "nix": [],
+        "heavy": []
+      }
+    }
+  ]
+}
