@@ -74,3 +74,4 @@ replaces them. They are not migrated or wrapped.
 Require the `fast` and `nix` jobs from `.github/workflows/ojuny-ci.yml` in every
 product repository. Hydra stays advisory. Fork pull requests use a read-only
 token, no secrets and no self-hosted runners.
+
