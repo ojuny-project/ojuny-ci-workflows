@@ -19,8 +19,8 @@ Snapdragon, Raspberry Pi and NVIDIA stay in plan 05.
 
 ## Status
 
-- The manifest records `x86_64-linux` for every repository and both systems for
-  `ojuny-ci-workflows`.
+- The manifest records `x86_64-linux` for every repository, including
+  `ojuny-welcome`, and both systems for `ojuny-ci-workflows`.
 - The generic aarch64 evaluation is not enabled yet. It needs a runner and a
   measured list of supported attributes.
 - The specialized targets are out of scope for plan 01.

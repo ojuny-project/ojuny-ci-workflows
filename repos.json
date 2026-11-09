@@ -136,6 +136,21 @@
       "systems": ["x86_64-linux"],
       "checks": {
         "fast": [],
+        "nix": [
+          "checks.x86_64-linux.default",
+          "checks.x86_64-linux.minimal"
+        ],
+        "heavy": []
+      },
+      "hydraJobs": "hydraJobs"
+    },
+    {
+      "name": "ojuny-welcome",
+      "path": "ojuny-welcome",
+      "kind": "flake",
+      "systems": ["x86_64-linux"],
+      "checks": {
+        "fast": [],
         "nix": ["checks.x86_64-linux.default"],
         "heavy": []
       },

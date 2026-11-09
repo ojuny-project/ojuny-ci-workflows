@@ -39,6 +39,9 @@ ISO artifacts, the CI server, physical hardware or a heavy build.
   `options-coverage`, `default`.
 - `nix-cleaner`, `nix-settings-gui`, `nix-regedit`, `nix-shell-gui`,
   `simple-nix-update-gui`: package and default checks.
+- `nix-settings-gui` also builds `checks.minimal`, the build without the
+  ojuny-specific widgets.
+- `ojuny-welcome`: package and default checks.
 
 ## Pending checks
 
