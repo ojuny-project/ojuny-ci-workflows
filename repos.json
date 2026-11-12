@@ -181,6 +181,18 @@
       "hydraJobs": "hydraJobs"
     },
     {
+      "name": "ojuny-login-splash",
+      "path": "ojuny-login-splash",
+      "kind": "flake",
+      "systems": ["x86_64-linux"],
+      "checks": {
+        "fast": [],
+        "nix": ["checks.x86_64-linux.default"],
+        "heavy": []
+      },
+      "hydraJobs": "hydraJobs"
+    },
+    {
       "name": "simple-nix-update-gui",
       "path": "simple-nix-update-gui",
       "kind": "flake",
