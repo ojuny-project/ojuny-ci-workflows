@@ -106,6 +106,23 @@
       "hydraJobs": "hydraJobs"
     },
     {
+      "name": "nix-builder-discovery",
+      "path": "nix-builder-discovery",
+      "kind": "flake",
+      "systems": ["x86_64-linux"],
+      "checks": {
+        "fast": [],
+        "nix": [
+          "checks.x86_64-linux.unit",
+          "checks.x86_64-linux.gofmt",
+          "checks.x86_64-linux.vet",
+          "checks.x86_64-linux.package"
+        ],
+        "heavy": ["checks.x86_64-linux.vm"]
+      },
+      "hydraJobs": "hydraJobs"
+    },
+    {
       "name": "nix-cache-discovery",
       "path": "nix-cache-discovery",
       "kind": "flake",
