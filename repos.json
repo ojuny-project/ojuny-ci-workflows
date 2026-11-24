@@ -147,6 +147,26 @@
       "hydraJobs": "hydraJobs"
     },
     {
+      "name": "nix-connect",
+      "path": "nix-connect",
+      "kind": "flake",
+      "systems": ["x86_64-linux"],
+      "checks": {
+        "fast": [],
+        "nix": [
+          "checks.x86_64-linux.unit-tests",
+          "checks.x86_64-linux.nixconnect",
+          "checks.x86_64-linux.nixconnect-daemon",
+          "checks.x86_64-linux.nixconnect-gui"
+        ],
+        "heavy": [
+          "checks.x86_64-linux.single-node",
+          "checks.x86_64-linux.two-node"
+        ]
+      },
+      "hydraJobs": "hydraJobs"
+    },
+    {
       "name": "nix-settings-gui",
       "path": "nix-settings-gui",
       "kind": "flake",
